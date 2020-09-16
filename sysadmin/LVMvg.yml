@@ -1,0 +1,10 @@
+
+
+- hosts: target1
+  become: yes
+  tasks:
+          - name: Create lVM volume group
+            lvg:
+              vg: vg1
+              pvs: /dev/xvdf1
+              pesize: 4

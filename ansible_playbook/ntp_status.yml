@@ -1,0 +1,10 @@
+- hosts: localhost
+  tasks:
+  - name: Checking log msg of NTP
+    shell: sudo tail -5 /var/log/messages
+    register: ntp_result
+  - debug:
+      var: ntp_result.stdout_lines
+  - name: copying the content
+    copy: content={{ ntp_result}} dest=/root/output1.txt
+

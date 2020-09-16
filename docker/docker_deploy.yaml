@@ -1,0 +1,21 @@
+
+- hosts: target1
+  become: yes
+  vars_files:
+  - dock_pass.yml
+  tasks:
+   - name: Logging into docker container
+     docker_login: 
+      username: vhirewadeyar
+      password: "{{pass}}"
+
+   - name: Pulling Image from docker hub
+     docker_container:
+       name: ubuntu_os
+       image: "{{item}}"
+       state: started
+       recreate: yes
+       ports:
+        - 8181:80
+     with_items:
+     - nginx

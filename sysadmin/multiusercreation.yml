@@ -1,0 +1,15 @@
+
+  - name: more complex items to add several users
+    hosts: all
+    become: yes
+    tasks:
+            - name: More complex items
+              user:
+               name: "{{ item.name }}"
+               uid: "{{ item.uid }}"
+               groups: "{{ item.groups }}"
+               #state: 
+              with_items:
+              - { name: 'testuser1', uid: 1002, groups: 'wheel, staff' }
+              - { name: 'testuser2', uid: 1003, groups: 'staff' }
+               

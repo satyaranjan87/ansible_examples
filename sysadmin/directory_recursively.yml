@@ -1,0 +1,13 @@
+
+- name: Creating directory recurrsively
+  hosts: all
+  become: yes
+  tasks:
+          - name: Creating directory recurrsively
+            file:
+                    path: /own/the/house
+                    state: directory
+                    owner: testuser1
+                    mode: 0755
+                    group: root
+                    recurse: yes

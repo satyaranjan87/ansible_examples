@@ -1,0 +1,13 @@
+
+- name: Playbook to restart httpd
+  hosts: target1
+  tasks:
+        - name: Httpd service restart
+          service: name=httpd state=restarted
+
+- name: Playbook to restart httpd
+  hosts: target2
+  become_user: yes
+  tasks:
+        - name: Httpd service restart2
+          service: name=httpd state=started

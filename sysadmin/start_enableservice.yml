@@ -1,0 +1,10 @@
+
+- name: To enable & start the service
+  hosts: all
+  become: yes
+  tasks:
+          - name: To install Httpd package
+            yum: name=httpd state=present
+          - name: To start and enable the service
+            service: name=httpd state=started enabled=yes 
+

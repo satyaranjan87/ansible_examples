@@ -1,0 +1,21 @@
+
+- hosts: target1
+  become: yes
+  vars_files:
+    - dock_pass.yml
+  tasks:
+    - name: Loggining into Docker Hub
+      docker_login:
+        username: vhirewadeyar
+        password: "{{ace}}"
+    - name: Pull and run the image
+      docker_container:
+        name: cust_wp
+        image: wordpress
+        state: started
+        recreate: yes
+        exposed_ports:
+          - 8999
+       # volumes_from:
+       #   - mydata
+

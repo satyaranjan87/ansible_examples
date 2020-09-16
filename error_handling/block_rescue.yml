@@ -1,0 +1,19 @@
+- hosts: target1
+  become: yes
+  tasks:
+    - block:
+      - name: Install openjdk 1.6v
+        yum:
+         name: java-1.6.0-openjdk.x86_64
+         state: present
+      rescue:
+      - name: Install openjdk 1.8v
+        yum:
+         name: java-1.8.0-openjdk.x86_64
+         state: present
+      always:
+        - name: Check whether java is installed or not
+          command: 'rpm -qa | grep java-1.8.0'
+          register: output
+
+        - debug: var=output

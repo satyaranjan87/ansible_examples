@@ -1,0 +1,19 @@
+#to check the date
+
+#-
+# name: playbook of date
+# hosts: localhost
+# tasks:
+#  - name: execute date
+ #   command: date > /tmp/output.txt
+
+
+#to check the date
+- name: Check the remote host uptime
+  hosts: target1
+  tasks:
+     - name: Execute the Uptime command over Command module
+       register: uptimeoutput
+       command: "uptime"
+     - debug:
+         var: uptimeoutput.stdout_lines

@@ -1,0 +1,12 @@
+- name: Useraccount
+  hosts: all
+  become: yes
+  tasks:
+      - name: Useraccc  
+        user: 
+          name: test121
+          comment: To test
+          uid: 1005
+          group: ansadm
+          shell: /bin/bash
+

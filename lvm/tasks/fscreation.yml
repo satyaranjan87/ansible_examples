@@ -1,0 +1,9 @@
+
+#- hosts: target2
+#  become: yes
+#  tasks:
+          - name: Creating a File system of the LVM
+            filesystem:
+                    fstype: ext4
+                    dev: /dev/vg1/lv1
+

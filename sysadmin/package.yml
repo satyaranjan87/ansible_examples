@@ -1,0 +1,12 @@
+
+- name: To install yum packages
+  hosts: all
+  become: yes
+  #become_method: sudo
+  #remote_user: ansadm
+  tasks:
+      - name: yum package
+        become_user: root
+        #become_method: sudo
+        #passwd: redhat 
+        yum: name=htop state=installed

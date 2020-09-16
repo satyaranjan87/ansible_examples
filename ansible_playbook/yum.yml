@@ -1,0 +1,7 @@
+#yum installation
+-
+  name: playbook for package installation
+  hosts: target1
+  tasks:
+   - name: yum installation
+     yum: name=google-guice.noarchgoogle-guice.noarch state=latest

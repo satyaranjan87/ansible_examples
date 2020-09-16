@@ -1,0 +1,6 @@
+
+- name: Compress directory
+  hosts: all
+  tasks:
+          - name: compress directory
+            archive: path=/tmp/udev  dest=/tmp/comp/udev.zip format=zip

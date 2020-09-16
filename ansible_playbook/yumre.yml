@@ -1,0 +1,7 @@
+
+- hosts: all
+  become: yes
+  tasks:
+   - name: To install htop package
+     yum: name=htop state=present
+

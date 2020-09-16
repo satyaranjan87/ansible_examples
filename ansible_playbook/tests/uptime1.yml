@@ -1,0 +1,37 @@
+
+- name: Playbook for uptime
+  hosts: all
+  tasks:
+     - name: Uptime Report
+       register: uptimeout
+       command: uptime
+
+     - debug: 
+         var: uptimeout.stdout_lines
+     - copy: content={{ uptimeout }} dest=/tmp/output.txt
+
+- name: Playbook for RAM
+  hosts: all
+  tasks:
+         - name: Memory output
+           register: memout
+           command: free -g
+
+         - debug:
+             var: memout.stdout_lines
+         - copy: content={{ memout }} dest=/tmp/Memory.txt
+
+
+
+
+- name: Playbook for uptime1
+  hosts: all
+  tasks:
+     - name: Uptime Report1
+       register: uptimeout1
+       command: uptime
+
+     - debug:
+         var: uptimeout1.stdout_lines
+     - copy: content={{ uptimeout1 }} dest= >> /tmp/output.txt
+

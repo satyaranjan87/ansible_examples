@@ -1,0 +1,9 @@
+#sample execution of date
+
+-
+
+   name: Play1
+   hosts: target1
+   tasks:
+     - name: Execute Date command
+       script: shell.sh 

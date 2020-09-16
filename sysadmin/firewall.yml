@@ -1,0 +1,21 @@
+
+
+- hosts: all
+  become: yes
+  tasks:
+          - name: firewall related playbook
+            firewalld:
+              service: nfs
+              permanent: yes
+              state: enabled
+          - name: firewall related adding playbook
+            firewalld:
+              service: mountd
+              permanent: yes
+              state: enabled
+- hosts: all
+  become: yes
+  post_tasks:   
+             - name: Reload the firewall
+               command: firewall-cmd --reload
+

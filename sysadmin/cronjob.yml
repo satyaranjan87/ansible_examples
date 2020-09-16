@@ -1,0 +1,16 @@
+
+- name: To set the Cronjob
+  hosts: all
+  become: yes
+  tasks:
+          - name: To create a cronjob for other user
+            cron:
+                    name: Crontab to run shell script
+                    job: "sh /tar/create1.sh"
+
+                    month: "*"
+                    day: "*"
+                    hour: "*"
+                    minute: "31"
+
+

@@ -1,0 +1,13 @@
+-
+  hosts: all
+  tasks:
+     - name: To install multiple packages
+       yum:
+         name: "{{ packages }}"
+       vars:
+         packages:
+             - httpd.x86_64
+             - httpd-filesystem.noarch
+             - httpd-tools.x86_64
+
+

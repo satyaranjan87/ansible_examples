@@ -1,0 +1,25 @@
+
+
+- hosts: target1
+  become: yes
+  tasks:
+          - name: Mount a filesystem
+            mount:
+                    fstype: ext4
+                    src: /dev/vg1/lv1
+                    path: /tar/mount
+                    state: mounted
+
+
+
+
+#- hosts: target1
+#  become: yes
+#  tasks:
+#          - name: Unmount a filesystem
+#            mount:
+#                    fstype: ext4
+#                    src: /dev/vg1/lv1
+#                    path: /tar/mount
+#                    state: absent
+

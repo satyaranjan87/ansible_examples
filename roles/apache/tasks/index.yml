@@ -1,0 +1,7 @@
+---
+- name: Copy content to Index.html file
+  copy:
+    content: "Testing the webpage from the server {{ansible_hostname}}!!"
+    dest: /var/www/html/index.html
+  notify:
+  - restart apache

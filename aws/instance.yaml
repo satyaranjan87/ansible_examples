@@ -1,0 +1,18 @@
+
+- name: Ansible Test
+  hosts: localhost
+  tasks:
+    - name: Launching AWS instance using Ansible
+      ec2:
+        key_name: AWS_sshkey
+        instance_type: t2.micro
+        image: ami-0ac80df6eff0e70b5
+        region: us-east-1
+        wait: yes
+        group: default
+        instance_tags: key=Name value=ansible_test
+        count: 1
+        vpc_subnet_id: subnet-e99ba0c7
+        assign_public_ip: yes
+        aws_access_key: "{{}}"
+        aws_secret_key: 

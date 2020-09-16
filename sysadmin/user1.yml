@@ -1,0 +1,8 @@
+
+- name: Creating user account
+  hosts: all
+  become: yes
+  tasks:
+        - name: user account creation
+          user:
+             name: Bangi

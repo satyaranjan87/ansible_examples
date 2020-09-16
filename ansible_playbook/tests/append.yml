@@ -1,0 +1,6 @@
+
+- name: Playbook for append
+  hosts: all
+  tasks:
+      - name: asdasdasdasd
+

@@ -1,0 +1,11 @@
+
+-
+  hosts: target1
+  tasks:
+       - name: execute uptime
+         #register: uptimeoutput
+         command: uptime
+         register: uptimeoutput
+
+       - debug:
+           var: uptimeoutput.stdout_lines

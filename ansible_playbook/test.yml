@@ -1,0 +1,10 @@
+
+-  name: Playbook1
+   hosts: all_servers
+   tasks:
+    - command: free -m
+      register: RAM_result
+    - debug:
+        var: RAM_result.stdout_lines
+    - name: copying the content
+      copy: content={{ RAM_result }} dest=/home/ansadm/output1.txt

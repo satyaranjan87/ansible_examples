@@ -1,0 +1,11 @@
+
+- name: user account remove from the server
+  hosts: all
+  become: yes
+  tasks:
+          - name: Removing the user account from the server
+            user:
+               name: test121
+               state: absent
+               remove: yes
+              

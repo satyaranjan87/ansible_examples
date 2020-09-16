@@ -1,0 +1,20 @@
+- name: dummy
+  hosts: localhost
+  serial: 1
+  tasks:
+    - name: create file
+      file:
+        dest: /tmp/foo
+        state: touch
+      delegate_to: localhost
+
+    - name: run cmd
+      shell: echo "{{ inventory_hostname }}"
+      register: op
+
+    - name: append
+      lineinfile:
+        dest: /tmp/foo
+        line: "{{ op }}"
+        insertafter: EOF
+      delegate_to: localhost

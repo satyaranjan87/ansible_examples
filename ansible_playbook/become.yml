@@ -1,0 +1,9 @@
+---
+-
+  name: to_test_the_become user
+  hosts: localhost
+  become: yes
+  become_user: ansadm
+  tasks:
+   - name: test the user
+     command: date

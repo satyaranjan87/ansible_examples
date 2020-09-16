@@ -1,0 +1,7 @@
+
+- name: stop the service
+  hosts: all
+  become: yes
+  tasks:
+          - name: To stop the service
+            service: name=httpd state=stopped

@@ -1,0 +1,11 @@
+-
+
+  name: Zip playbook
+  hosts: target1
+  tasks:
+          - name: Zip playbook
+            archive:
+              path: /tmp/test/*
+              dest: /tmp/zipp/*
+
+              format: zip

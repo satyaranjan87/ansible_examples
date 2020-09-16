@@ -1,0 +1,23 @@
+- hosts: target1
+  become: yes
+  tasks:
+    - name: Installation of Apache package
+      yum:
+        name: httpd
+        state: present
+      notify: check url response
+    - name: Edit the Index.html file
+      copy:
+        content: "Welcome to Apache webservers in client!!!\n"
+        dest: /var/www/html/index.html
+      notify: restart httpd
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: check url response
+      uri:
+        url: http://172.31.84.209:80
+        status_code: 200

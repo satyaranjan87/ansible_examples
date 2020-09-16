@@ -1,0 +1,14 @@
+
+- name: scheduling the jon
+  hosts: target1
+  tasks:
+     - name: cron job schedule
+       cron:
+               name: "schedule..s"
+               job: "/bin/sh /tar/create.sh"
+               month: "2"
+               day: "3"
+               hour: "06"
+               minute: "15"
+
+          

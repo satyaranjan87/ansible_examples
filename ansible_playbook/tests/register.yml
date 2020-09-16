@@ -1,0 +1,18 @@
+
+- name: check status of service and Email if its down
+  hosts: target1
+  become: yes
+  tasks:
+       - name: service check 
+         shell: "systemctl status httpd"
+        # register: command_output
+     #  - debug:
+     #     msg: "{{ command_output }}"
+
+
+       #- mail:
+       #      to: root@target1.ec2.internal.com
+       #      from: root@controller.ec2.internal.com
+       #      subject: Service Alert
+       #      body: 'service {{ ansible_hostname }} is down'
+        # when: command_output.stdout.find('active') != -1

@@ -1,0 +1,20 @@
+-
+
+  name: Start service httpd, if not started
+  hosts: localhost
+  tasks:
+   - name: service restart 
+     service: name=httpd state=stopped enabled=no
+
+
+
+
+#---
+#-  name: Service Plabook
+#   hosts: localhost
+#   tasks:
+#           - name: Service status check
+#            service:
+#                 name: httpd
+#                 state: started
+

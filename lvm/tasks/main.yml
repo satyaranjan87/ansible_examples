@@ -1,0 +1,7 @@
+---
+# tasks file for lvm
+- import_tasks: vgcreate.yml
+- import_tasks: lvcreate.yml
+- import_tasks: fscreation.yml
+- import_tasks: mount.yml
+

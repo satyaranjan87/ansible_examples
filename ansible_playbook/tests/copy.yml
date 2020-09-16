@@ -1,0 +1,7 @@
+
+- name: Play1
+  hosts: all
+  become: yes
+  tasks:
+          - name: copying the file
+            copy: src=/tmp/hellothere dest=/tmp/

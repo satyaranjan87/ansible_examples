@@ -1,0 +1,21 @@
+
+
+- hosts: all
+  become: yes
+  #serial: 1
+  tasks:
+    - name: To restart the apache service
+      apt: name=apache2 state=present
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: list contents of directory
+      shell: ls mydir
+      register: mydir_contents
+
+    #- shell: echo "mydir contains the files"
+    #  when: mydir_contents.stdout.find('file') != -1
+
+    - name: check contents for emptiness
+      debug:
+        msg: "Directory is empty"
+      when: mydir_contents.stdout == "king"

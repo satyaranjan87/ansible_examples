@@ -1,0 +1,10 @@
+
+- name: creation of directory
+  hosts: all
+  become: yes
+  tasks:
+         - name: creation of directory
+           file:
+                   path: /staff
+                   state: directory
+                   owner: staff

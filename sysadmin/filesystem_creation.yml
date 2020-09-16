@@ -1,0 +1,10 @@
+
+
+- name: Creating FS for LVM
+  hosts: target1
+  become: yes
+  tasks:
+          - name: Creating FS for LVM
+            filesystem:
+                    fstype: ext4
+                    dev: /dev/vg1/lv1

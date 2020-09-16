@@ -1,0 +1,15 @@
+- name: Sync Pull task - Executed on Target1
+  hosts: target1
+  user: ansadm
+  tasks:   
+    - name: Copy the file from mwiapp01 to mwiapp02 using Method Pull
+      tags: sync-pull
+      synchronize:
+        src: /tmp/test101
+        dest: /tmp/
+        mode: pull
+      delegate_to: target2.ec2.internal
+      register: syncfile
+      run_once: yes
+      # with_items:
+      #- "/tmp/app01-to-app02.jar"

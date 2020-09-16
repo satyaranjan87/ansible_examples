@@ -1,0 +1,10 @@
+
+
+-
+  name: archive the files
+  hosts: target1
+  tasks:
+  - name: archiving
+    archive:
+     path: /tmp/test/*
+     dest: /tmp/archive/files.gz

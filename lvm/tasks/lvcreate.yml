@@ -1,0 +1,12 @@
+
+
+#- hosts: target2
+#  become: yes
+#  tasks:
+          - name: To create the Logical Volume
+            lvol:
+                    lv: lv1  
+                    vg: vg1
+                    pvs: /dev/xvdf1
+                    size: 52
+

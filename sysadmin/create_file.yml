@@ -1,0 +1,11 @@
+
+- name: creating the file
+  hosts: all
+  become: yes
+  tasks:
+          - name: Creating the file
+            file:
+                  path: /opt/hello&hi
+                  state: touch
+                  owner: ansadm
+                  mode: 0777

@@ -1,0 +1,45 @@
+###############################
+####	Inventory File	######
+#############################
+
+
+[target1]
+Target1.ec2.internal 
+
+[target2]
+Target2.ec2.internal ansible_ssh_host=172.31.91.101 ansible_ssh_user=ansadm
+#worker1.compute.internal  ansible_ssh_host=13.235.245.127
+#worker2.compute.internal  ansible_ssh_host=13.232.221.168 ansible_ssh_pass=ansadm
+
+
+#[server]
+#target1.ec2.internal
+#target2.ec2.internal
+
+#Server1.company.com
+#Server2.company.com
+
+#[mail]
+#Server3.company.com
+#Server4.company.com
+
+#[db]
+#Server5.company.com
+#Server6.company.com
+
+#[app]
+#Server7.company.com
+#Server8.company.com
+
+#[all_servers:children]
+#mail
+#db
+#app
+
+
+
+#Sample Inventory
+
+#web  ansible_host= Server1.company.com  ansible_connection=ssh    ansible_user=root
+#mail ansible_host= Server2.company.com  ansible_connection=winrm  ansible_user=admin
+#db   ansible_host= Server3.company.com  ansible_connection=ssh    ansible_ssh_pass=Pa$$w0rd

@@ -1,0 +1,11 @@
+-
+  name: Play1
+  hosts: localhost
+  tasks:
+        - name: creating a file
+          file: 
+            path: /tmp/file.txt
+            owner: root
+            group: root
+            mode: u=rwx, g=rw, o=r
+            

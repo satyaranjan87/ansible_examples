@@ -1,0 +1,35 @@
+---
+- name: Installation of Jenkins S/W
+  hosts: target1
+  become: yes
+  tasks:
+    - name: installtion of Openjdk, git & maven
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - java-1.8.0-openjdk.x86_64
+        - git
+        - maven.noarch
+    - name: Download Jenkins .war file
+      become: yes
+      get_url:
+        url: https://updates.jenkins-ci.org/download/war/2.242/jenkins.war
+        dest: /opt/
+    
+- name: Download tomcat 8
+  hosts: target2
+  become: yes
+  tasks:
+    - name: Download tomcat 8
+      get_url:
+        url: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.56/bin/apache-tomcat-8.5.56.tar.gz
+        dest: /opt/
+    - name: Copy tomcat-users.xml file
+      copy:
+        src: tomcat-users.xml
+        dest: /etc/tomcat8
+    - name: Restart the tomcat service
+      service:
+        name: tomcat
+        state: restarted

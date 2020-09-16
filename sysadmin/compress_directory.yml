@@ -1,0 +1,6 @@
+
+- name: Compressing a directory
+  hosts: all
+  tasks:
+          - name: compressing a directory
+            archive: path=/tmp/systemd  dest=/tmp/comp/systemd.gz

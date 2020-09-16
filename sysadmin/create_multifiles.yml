@@ -1,0 +1,16 @@
+
+- name: Creating_multiple files
+  hosts: all
+  become: yes
+  tasks:
+
+         - name: creating_multiple files
+           file:
+                   path: "{{ item.location }}"
+                   state: touch
+                   mode: "{{ item.mode }}"
+           with_items:
+           - { location: '/opt/int5.txt', mode: '0755' }
+           - { location: '/opt/int6.txt', mode: '0740' }
+
+

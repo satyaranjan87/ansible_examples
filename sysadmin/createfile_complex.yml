@@ -1,0 +1,15 @@
+
+- name: Complex user addition
+  hosts: all
+  become: yes
+  tasks:
+          - name: Complex user addidtion
+            file:
+                    path: "{{ item.location  }}"
+                    state: touch
+                    mode: "{{ item.mode }}"
+                    group: "{{ item.group }}"
+            with_items:
+            - { location: '/home/ec2-user/Filek.txt', group: 'ansadm', mode: 755 }
+            - { location: '/home/ec2-user/Filekt.txt', group: 'ansadm', mode: 744 }
+

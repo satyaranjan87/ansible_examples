@@ -1,0 +1,13 @@
+
+- hosts: target1
+  become: yes
+  vars_files:
+      - pass.yml
+  tasks:
+   - name: Ansible create multiple users
+     user:
+      name: "{{ item.name }}"
+      password: "{{ pass }}"
+     with_items:
+     - { name: 'sham' }
+     - { name: 'ram' }

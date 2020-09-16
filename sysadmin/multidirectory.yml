@@ -1,0 +1,17 @@
+
+- name: Creating Multi directory
+  hosts: all
+  become: yes
+  tasks:
+          - name: Multi directory creation with different specs
+            file:
+                path: "{{ item.location }}"
+                state: directory
+                owner: "{{ item.owner }}"
+                mode: "{{ item.mode }}"
+                recurse: yes
+            with_items:
+            - { location: '/own/the/house/in', owner: 'ansadm', mode: '0755' }
+            - { location: '/own/the/EMI/today', owner: 'root', mode: '0755' }
+            - { location: '/own/EMI', owner: 'testuser2', mode: '0757' }
+               

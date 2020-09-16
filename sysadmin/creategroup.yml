@@ -1,0 +1,8 @@
+
+- name: creating user group
+  hosts: all
+  become: yes
+  tasks:
+          - name: creating a new user group
+            group:
+                    name: Groups

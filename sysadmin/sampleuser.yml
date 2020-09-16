@@ -1,0 +1,9 @@
+
+- name: sample test user creation
+  hosts: all
+  become: yes
+  tasks:
+          - name: sample test user creation
+            user:
+                    name: staff
+                    group: staff

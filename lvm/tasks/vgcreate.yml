@@ -1,0 +1,9 @@
+
+#- hosts: target2
+#  become: yes
+#  tasks:
+          - name: create the Volume Group
+            lvg:
+                    vg: vg1
+                    pvs: /dev/xvdf1
+                    pesize: 4  
