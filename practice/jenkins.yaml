@@ -1,0 +1,25 @@
+- hosts: target1
+  become: yes
+  tasks:
+    - name: Install the java in the system
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - java-1.8.0-openjdk.x86_64
+        - git.x86_64
+        - maven.noarch
+    - name: Downloading the jenkins.war file
+      get_url:
+        url: https://pkg.jenkins.io/redhat-stable/jenkins-2.235.1-1.1.noarch.rpm
+        dest: /tmp/
+- name: Install Tomcat service in the server
+  hosts: target1
+  become: yes
+  tasks:
+    - name: Installing the tomcat
+      yum:
+        name: tomcat.noarch
+        state: present
+
+      

@@ -1,0 +1,48 @@
+
+
+- hosts: target1
+  become: yes
+  pre_tasks:
+    - name: Running the latest upgrades
+      yum:
+        name: "*"
+        state: latest
+
+
+    - name: Rebooting the server
+      command: reboot
+     #async: 0
+     #poll: 1
+    - pause:
+       minutes: 2
+  # This pause is mandatory to wait for the yml script      
+    #- pause: seconds=30
+             
+    - name: Wait for 22 port
+      wait_for:
+        port: 22
+        host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+        search_regex: OpenSSH
+        delay: 10
+        timeout: 300
+    
+# - name: To check the server is up or not
+  post_tasks:
+   - name: check the uptime
+     shell: "uptime"
+     register: uptime_out
+    # failed_when: "'FAILED' in command_result.stderr"
+   - debug:
+       var: uptime_out.stdout_lines
+
+
+
+#    - name: Wait 300 seconds for port 22 to become open and contain "OpenSSH"
+#      wait_for:
+#        port: 22
+#        host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+#        search_regex: OpenSSH
+#        delay: 10
+#      vars:
+#         ansible_connection: local
+

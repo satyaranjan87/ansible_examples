@@ -1,0 +1,7 @@
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Clone git repository
+      git: 
+        dest=/tmp/jenkins
+        repo=git@github.com:github383/ansible.git

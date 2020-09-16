@@ -1,0 +1,15 @@
+- hosts: target1
+  become: yes
+  tasks:
+    - name: Install the httpd
+      yum: name=httpd state=present
+    - name: Edit Index.html file
+      copy:
+        content: "YES!!! It works\n"
+        dest: /var/www/html/index.html
+      notify: Restart httpd service
+  handlers:
+      - name: Restart httpd service
+        service:
+          name: httpd
+          state: restarted

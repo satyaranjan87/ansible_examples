@@ -1,0 +1,5 @@
+- hosts: target1
+  become: yes
+  tasks:
+  - debug:
+      msg: Git version is {{ httpd_ver }}

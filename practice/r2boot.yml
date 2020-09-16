@@ -1,0 +1,25 @@
+- name: Reboot a host and wait for it to return
+  hosts: target1
+  become: yes
+  tasks:
+    - shell: sleep 2 && reboot
+
+
+    - name: Wait for server to restart
+      local_action:
+         module: wait_for
+          host=172.31.84.209
+          port=22
+          delay=1
+          timeout=300
+
+    - pause: seconds=120
+
+#    - local_action: shell ansible -u {{ ansible_user_id }} -m ping {{ inventory_hostname }}
+#      register: result
+#      until: result.rc == 0
+#      retries: 30
+#      delay: 10
+
+    
+    - shell: uptime

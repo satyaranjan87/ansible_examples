@@ -1,0 +1,13 @@
+- name: trying to work with pause module
+  hosts: target1
+  become_user: yes
+  tasks:
+    - name: "Ansible | Print a variable"
+      debug:
+         msg: "The operating system is {{ ansible_distribution }}"
+    - name: "try to pause for sometime"
+      pause:
+              minutes: 1
+    - name: Ansible
+      debug:
+              msg: "this is just to check whether pause is working or not"

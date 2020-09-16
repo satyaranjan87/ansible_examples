@@ -1,0 +1,5 @@
+- hosts: target1
+  become: yes
+  tasks:
+      - name: Copy the file to destination
+        copy: src=/tmp/file  dest=/kubectl
